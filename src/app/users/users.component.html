@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"><strong>Name</strong></div>
+    <div class="col-md-3"><strong>UserName</strong></div>
+    <div class="col-md-3"><strong>Email</strong></div>
+    <div class="col-md-3"><strong>Phone</strong></div>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let user of users">
+      <div class="row">
+        <div class="col-md-3">{{ user.Name }}</div>
+        <div class="col-md-3">{{ user.UserName }}</div>
+        <div class="col-md-3">{{ user.Email }}</div>
+        <div class="col-md-3">{{ user.Phone }}</div>
+      </div>
+    </li>
+  </ul>
+</div>
