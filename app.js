@@ -5,6 +5,7 @@ require('./global_functions');
 const sessions = require('./controllers/SessionsController');
 const bodyParser = require('body-parser');
 const app = express();
+require('mysql2');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // import test from './routes/test';
 const test = require('./routes/test');
 const Sessions = require('./controllers/SessionsController');
+const Users = require('./controllers/UsersController');
 
 app.use('/', test);
 
@@ -28,9 +30,14 @@ if (CONFIG.app ===  'dev') {
   models.sequelize.sync();
 }
 
-app.get('/sessions', sessions.getAll);
-app.get('/sessions/:sessionId', sessions.get);
-app.post('/sessions', sessions.create);
-app.put('/sessions', sessions.update);
+app.get('/sessions', Sessions.getAll);
+app.get('/sessions/:sessionId', Sessions.get);
+app.post('/sessions', Sessions.create);
+app.put('/sessions', Sessions.update);
+
+app.get('/users', Users.getAll);
+app.get('/users/:userId', Users.get);
+app.post('/users', Users.create);
+app.put('/users', Users.update);
 
 module.exports = app;

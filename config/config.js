@@ -1,6 +1,7 @@
 CONFIG = {};
 
 CONFIG.app = 'dev';
+CONFIG.db_host='localhost';
 CONFIG.db_dialect = 'mysql';
 CONFIG.db_name = 'TrainingRaterStarter';
 CONFIG.db_user = 'root';
