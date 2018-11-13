@@ -71,7 +71,7 @@ const create = async function (req, res) {
     res.statusCode = 422; // unprocessable entity
     return res.json({ success: false, error: err });
   }
-  [err, user] = await to(User.save());
+  [err, user] = await to(user.save());
   if (err) {
     if (typeof err == 'object' && typeof err.message != 'undefined') {
       err = err.message;
