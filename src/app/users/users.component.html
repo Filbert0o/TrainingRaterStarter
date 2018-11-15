@@ -8,10 +8,10 @@
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let user of users">
       <div class="row">
-        <div class="col-md-3">{{ user.Name }}</div>
-        <div class="col-md-3">{{ user.UserName }}</div>
-        <div class="col-md-3">{{ user.Email }}</div>
-        <div class="col-md-3">{{ user.Phone }}</div>
+        <div class="col-md-3">{{ user.firstName }} {{ user.lastName }}</div>
+        <div class="col-md-3">{{ user.username }}</div>
+        <div class="col-md-3">{{ user.email }}</div>
+        <div class="col-md-3">{{ user.phone }}</div>
       </div>
     </li>
   </ul>
