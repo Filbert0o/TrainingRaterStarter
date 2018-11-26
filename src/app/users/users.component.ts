@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService, IUser } from './users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -8,7 +9,10 @@ import { UserService, IUser } from './users.service';
 })
 export class UsersComponent implements OnInit, OnDestroy {
   users: IUser;
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     console.log('Init in Users');
@@ -16,6 +20,14 @@ export class UsersComponent implements OnInit, OnDestroy {
       .subscribe(
         (users) => this.users = users
       );
+  }
+
+  goToAdd(): void {
+    this.router.navigate(['users/add']);
+  }
+
+  goToEdit(id: number): void {
+    this.router.navigate([`users/${id}`]);
   }
 
   ngOnDestroy(): void {

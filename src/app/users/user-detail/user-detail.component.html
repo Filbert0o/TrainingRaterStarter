@@ -1,0 +1,20 @@
+<div class="row">
+        <div class="col-md-6">
+            <div *ngIf="this.user" class="well well-sm">
+                <h4>User Detail</h4>
+                <label>First Name</label>
+                <input type="text" class="form-control" [(ngModel)]="user.firstName" />
+                <label>Last Name</label>
+                <input type="text" class="form-control" [(ngModel)]="user.lastName"/>
+                <label>UserName</label>
+                <input type="text" class="form-control" [(ngModel)]="user.username"/>
+                <label>Email</label>
+                <input type="text" class="form-control" [(ngModel)]="user.email"/>
+                <label>Phone</label>
+                <input type="text" class="form-control" [(ngModel)]="user.number"/>
+                <br>
+                <button type="button" class="btn btn-primary" (click)="save(user)">Save</button>
+                <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
