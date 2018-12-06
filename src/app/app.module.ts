@@ -8,16 +8,19 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SessionsModule } from './sessions/sessions.module';
 import { UsersModule } from './users/users.module';
+import { LoginComponent } from './common/auth/login.component';
 import { AuthService } from './common/auth/auth.service';
 import { AuthGuard } from './common/auth/auth.guard';
+import { TokenInterceptor } from './common/auth/token.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,11 @@ import { AuthGuard } from './common/auth/auth.guard';
     NgbModule,
     ToastModule.forRoot(),
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [
+    AuthService,
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
