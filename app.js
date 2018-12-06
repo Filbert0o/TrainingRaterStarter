@@ -13,8 +13,6 @@ const Users = require('./models').Users;
 const app = express();
 require('mysql2');
 
-
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
@@ -77,10 +75,10 @@ app.post('/sessions', passport.authenticate('jwt', { session: false }), sessions
 app.put('/sessions', passport.authenticate('jwt', { session: false }), sessions.update);
 app.post('/users', userController.create);
 app.post('/login', userController.login);
-// app.get('/users', User.getAll);
+app.get('/users', userController.getAll);
 // app.get('/users/:userId', User.get);
-app.post('/users', userController.create);
-app.post('/login', userController.login);
+// app.post('/users', userController.create);
+// app.post('/login', userController.login);
 // app.put('/users', User.update);
 
 // const PassportSetup = function (passport) {

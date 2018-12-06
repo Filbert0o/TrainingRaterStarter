@@ -11,6 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { SessionsModule } from './sessions/sessions.module';
 import { UsersModule } from './users/users.module';
+import { AuthService } from './common/auth/auth.service';
+import { AuthGuard } from './common/auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import { UsersModule } from './users/users.module';
     NgbModule,
     ToastModule.forRoot(),
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

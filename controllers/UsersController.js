@@ -9,10 +9,10 @@ const validator = require('validator');
   } else if (!body.password) {
     return ReE(res, 'Please enter a password to register', 422);
   } else {
-    let err, user;
-     [err, user] = await to(createUser(body));
-    if (err) return ReE(res, err, 422);
-     return ReS(res, user, 201);
+      let err, user
+      [err, user] = await to(createUser(body));
+      if (err) return ReE(res, err, 422);
+      return ReS(res, user, 201);
   }
 }
 module.exports.create = create;
@@ -21,6 +21,7 @@ module.exports.create = create;
   let err;
   if (validator.isEmail(userInfo.email)) {
     [err, user] = await to(Users.create(userInfo));
+    console.log(err)
     if (err) TE('User already exists with that email');
     return user;
   } else {
@@ -32,7 +33,7 @@ module.exports.createUser = createUser;
 const login = async function (req, res) {
   const body = req.body;
   let err, user;
-   [err, user] = await to(authUser(body));
+   [err, user] = await to(authUser(req.body));
   if (err) return ReE(res, err, 422);
    return ReS(res, { token: user.getJWT(), user: user.toJSON() });
 }

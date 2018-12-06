@@ -11,8 +11,6 @@ import { Observable } from 'rxjs';
 }
  @Injectable()
 export class SessionRatingsService {
-   // TODO CCC: remove this, it is only here pretend it
-  // is the DB right now
   private ratings: ISessionRating[] = [];
    constructor(
     private http: HttpClient,
