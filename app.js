@@ -3,7 +3,7 @@ require('./config/config');
 const models = require('./models');
 require('./global_functions');
 const sessions = require('./controllers/SessionsController');
-const Sessions = require('./controllers/SessionsController');
+const ratings = require('./controllers/RatingsController');
 const userController = require('./controllers/UsersController');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -76,10 +76,8 @@ app.put('/sessions', passport.authenticate('jwt', { session: false }), sessions.
 app.post('/users', userController.create);
 app.post('/login', userController.login);
 app.get('/users', userController.getAll);
-// app.get('/users/:userId', User.get);
-// app.post('/users', userController.create);
-// app.post('/login', userController.login);
-// app.put('/users', User.update);
+app.post('/ratings/:sessionId', passport.authenticate('jwt', { session: false }), ratings.create);
+app.put('/ratings/:ratingId', passport.authenticate('jwt', { session: false }), ratings.update);
 
 // const PassportSetup = function (passport) {
 //   var opts = {};
