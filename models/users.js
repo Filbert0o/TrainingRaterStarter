@@ -17,7 +17,7 @@ const jwt = require('jsonwebtoken');
           // associations can be defined here
         }
       }
-    });
+    }); 
   Users.beforeSave(async (user) => {
     let err;
     if (user.changed('password')) {

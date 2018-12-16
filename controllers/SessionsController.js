@@ -1,5 +1,5 @@
 const Sessions = require('../models').Sessions;
-const Ratings = rquire('../models').Ratings;
+const Ratings = require('../models').Ratings;
 
 const getAll = async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
@@ -21,13 +21,13 @@ const getAll = async (req, res) => {
     sessionInfo.avgRating = 0;
 
     for( let r in sessionInfo.Ratings) {
-      sessionInfo.avgRating += parseInt(sessionInfo.Ratings[r]. rating);
+      sessionInfo.avgRating += parseInt(sessionInfo.Ratings[r].rating);
     }
 
-    if (sessionInfo.Rating.length > 0) {
+    if (sessionInfo.Ratings.length > 0) {
       sessionInfo.avgRating = sessionInfo.avgRating / sessionInfo.Ratings.length;
     }
-    sessionsWithAverage.push(sessionsInfo);
+    sessionsWithAverage.push(sessionInfo);
   }
 
   return res.json(sessionsWithAverage);
@@ -39,11 +39,13 @@ const get = async (req, res) => {
   let sessionId = parseInt(req.params.sessionId)
   res.setHeader('Content-Type', 'application/json');
 
-  [err, session] = await to(Sessions.findById(sessionId))
+  // [err, session] = await to(Sessions.findById(sessionId))
+  [err, session] = await to(Sessions.find({ where: {id: sessionId}, include: [{ model: Ratings }] }))
   if (!session) {
     res.statusCode = 404;
     return res.json({ success: false, error: err });
   }
+  
   return res.json(session);
 }
 module.exports.get = get;

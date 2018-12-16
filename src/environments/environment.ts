@@ -5,4 +5,11 @@
 
 export const environment = {
   production: false
+  // apiPost: website.com/sessions
 };
+
+// ${environment.apiPost}
+
+// api host url intercepter
+// this.http.post(/session)
+// google, if it starts with a / then use the actual thing

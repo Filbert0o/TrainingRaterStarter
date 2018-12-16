@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ISession, SessionsService } from '../sessions.service';
 import { ToastsManager } from 'ng2-toastr';
+// import { SessionRatingsService, ISessionRating } from '../session-rating/session-rating.service';
 
 @Component({
     templateUrl: './session-detail.component.html',
@@ -39,6 +40,8 @@ export class SessionDetailComponent implements OnInit {
                 startTime: this.getLocalDateTime(),
                 createdAt: '',
                 updatedAt: '',
+                avgRating: 0,
+                Ratings: null
             };
         }
     }

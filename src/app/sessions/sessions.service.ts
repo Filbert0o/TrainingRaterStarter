@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { SessionRatingsService, ISessionRating } from './session-rating/session-rating.service';
+
 // tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs';
 
@@ -11,6 +13,8 @@ export interface ISession {
   startTime: string;
   createdAt: string;
   updatedAt: string;
+  avgRating: number;
+  Ratings: ISessionRating[];
 }
 
 @Injectable()

@@ -1,7 +1,7 @@
 const Users = require('../models').Users;
 const validator = require('validator');
 
- const create = async function (req, res) {
+const create = async function (req, res) {
   res.setHeader('ContentType', 'application/json');
   const body = req.body;
    if (!body.email) {
@@ -17,7 +17,7 @@ const validator = require('validator');
 }
 module.exports.create = create;
 
- const createUser = async function (userInfo) {
+const createUser = async function (userInfo) {
   let err;
   if (validator.isEmail(userInfo.email)) {
     [err, user] = await to(Users.create(userInfo));
@@ -38,7 +38,7 @@ const login = async function (req, res) {
    return ReS(res, { token: user.getJWT(), user: user.toJSON() });
 }
 module.exports.login = login;
-
+ 
 const authUser = async function (userInfo) {//returns token
    if (!userInfo.email) TE('Please enter an email to login');
    if (!userInfo.password) TE('Please enter a password to login');
